@@ -1,0 +1,24 @@
+{
+  "name": "@taluoo/tmpfile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taluoo/tmpfile.git"
+  },
+  "author": "taluoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taluoo/tmpfile/issues"
+  },
+  "homepage": "https://github.com/taluoo/tmpfile#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^4.0.1"
+  }
+}
