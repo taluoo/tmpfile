@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const {makeTmpFile, makeTmpFileSync, deleteTmpFile} = require('../index');
 
-describe('util/tmpfile.js', () => {
+describe('index.js', () => {
     it('should export three function', function () {
         makeTmpFile.should.be.a('function');
         makeTmpFileSync.should.be.a('function');
@@ -15,7 +15,6 @@ describe('util/tmpfile.js', () => {
     describe('makeTmpFile()', () => {
         it('should return a promise', async () => {
             let promise = makeTmpFile();
-            // tmpfilePath = await promise;// only for clean tmp file
 
             promise.should.be.a('promise');
             deleteTmpFile(await promise);
