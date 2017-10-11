@@ -3,14 +3,14 @@ const os = require('os');
 const path = require('path');
 
 let tmpDirPrefix = path.join(os.tmpdir(), 'node-util-');
-
+let tmpFileName = 'tmp.tmp';
 /**
  * 同步创建临时文件
  * @return {*} 临时文件路径
  */
 function makeTmpFileSync() {
     let tmpPath = fs.mkdtempSync(tmpDirPrefix);
-    let tmpFilePath = path.join(tmpPath, 'tmp');
+    let tmpFilePath = path.join(tmpPath, tmpFileName);
     fs.openSync(tmpFilePath, 'wx');
     return tmpFilePath;
 }
@@ -25,7 +25,7 @@ function makeTmpFile() {
             if (err) {
                 reject(err)
             } else {
-                let tmpFilePath = path.join(tmpDir, 'tmp');
+                let tmpFilePath = path.join(tmpDir, tmpFileName);
                 fs.open(tmpFilePath, 'wx', function (err, fd) {
                     if (err) {
                         reject(err)

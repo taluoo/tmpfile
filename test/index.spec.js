@@ -7,6 +7,8 @@ const fs = require('fs');
 const {makeTmpFile, makeTmpFileSync, deleteTmpFile} = require('../index');
 
 describe('index.js', () => {
+    let tmpDirPrefix = path.join(os.tmpdir(), 'node-util-');
+    let tmpFileName = 'tmp.tmp';
     it('should export three function', function () {
         makeTmpFile.should.be.a('function');
         makeTmpFileSync.should.be.a('function');
@@ -23,7 +25,8 @@ describe('index.js', () => {
             it('return a file path', async () => {
                 let tmpfilePath = await makeTmpFile();
 
-                tmpfilePath.should.be.include(path.join(os.tmpdir(), 'node-util-'));
+                tmpfilePath.should.include(tmpDirPrefix);
+                tmpfilePath.should.include(tmpFileName);
                 fs.existsSync(tmpfilePath).should.be.true;
                 deleteTmpFile(tmpfilePath);
             });
@@ -38,7 +41,8 @@ describe('index.js', () => {
         it('return a file path', function () {
             tmpfilePath = makeTmpFileSync();
 
-            tmpfilePath.should.be.include(path.join(os.tmpdir(), 'node-util-'));
+            tmpfilePath.should.include(tmpDirPrefix);
+            tmpfilePath.should.include(tmpFileName);
             fs.existsSync(tmpfilePath).should.be.true;
         });
         afterEach('clean tmp file', function () {
