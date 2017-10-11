@@ -74,7 +74,8 @@ describe('index.js', () => {
                 await deleteTmpFile('./tmp/tmp.txt').should.be.rejected;
             });
             it('when path is not in system tmp dir', async function () {
-                await deleteTmpFile('/Users/liuyaguang/work/spider-man/test/tmp/tmp.txt').should.be.rejectedWith(Error)
+                let abPath = __dirname + '/tmp/tmp.txt';
+                await deleteTmpFile(abPath).should.be.rejectedWith(Error)
             });
             describe('when delete failed', () => {
                 it('should throw error ')
